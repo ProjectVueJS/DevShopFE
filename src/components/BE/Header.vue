@@ -4,8 +4,10 @@
         <Button class="bg-blue-700 sm:hidden lg:hidden md:hidden block" label="" icon="pi pi-bars"
             @click="visible = true" :aria-controls="visible ? 'sbar' : null" :aria-expanded="visible"
             :class="$style.sidebarStatusBtn" />
-        <div>notifi</div>
-        <div>avata</div>
+        <div class="flex">
+            <MenuDropdown />
+            <!-- avata -->
+        </div>
 
         <div id="mobile-sidebar">
             <Sidebar class="w-full" id="sbar" v-model:visible="visible" role="region">
@@ -87,6 +89,7 @@
 import { ref } from "vue";
 import Sidebar from 'primevue/sidebar';
 import Button from "primevue/button"
+import MenuDropdown from '@/common/MenuDropdown';
 const visible = ref(false);
 </script>
 
@@ -94,10 +97,9 @@ const visible = ref(false);
 <script>
 export default {
     name: 'HeaderAdmin',
-    // components: {
-    //     Sidebar,
-    //     Button
-    // }
+    components: {
+        MenuDropdown,
+    }
 }
 </script>
 
