@@ -4,16 +4,6 @@ import AdminLogin from '@/views/Backend/AdminLogin.vue'
 import AdminDashboard from '@/views/Backend/Dashboard.vue'
 
 const routes = [
-  // {
-  //   path: '/',
-  //   name: 'home',
-  //   component: HomeView
-  // },
-  // {
-  //   path: '/about',
-  //   name: 'about',
-  //   component: () => import(/* webpackChunkName: "about" */ '../views/AboutView.vue')
-  // }
   {
     path: '/admin',
     name: 'admin',
