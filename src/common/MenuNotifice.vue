@@ -1,25 +1,27 @@
 <template>
+    <div id="close-zone menu" class="fixed top-0 right-0 w-full h-full opacity-0 bg-green-500"
+        @click="changeStatus"
+        :class="{ 'hidden': !status }"
+    >
+        ss
+    </div>
     <div class="flex justify-content-center items-center">
-        <!-- <i class="pi pi-bell place-content-center mx-2 text-white cursor-pointer p-2 relative"> 
-            <span class="absolute top-0 inline-flex items-center rounded-full bg-red-50 px-2 p-1 text-xs font-medium text-red-700 ring-1 ring-inset ring-red-600/10">11</span>
-        </i> -->
         <span class="relative text-center h-10 rounded-full w-10 place-content-center mx-2 text-white">
-            <i class="pi pi-bell p-2 cursor-pointer" @click="changeStatus">
+            <i class="pi pi-bell px-2 pt-4 cursor-pointer" @click="changeStatus">
                 <span
-                    class="select-none absolute top-0 right-0 inline-flex rounded-full bg-red-50 text-xs font-semibold min-h-5 min-w-5 text-red-700 place-content-center leading-5">
+                    class="select-none absolute top-1 right-0 inline-flex rounded-full bg-red-50 text-xs font-semibold min-h-5 min-w-5 text-red-700 place-content-center leading-5">
                     69
                 </span>
             </i>
-
             <div id="list-notifice"
                 class="bg-white shadow-lg overflow-hidden absolute top-full lg:right-0 md:right-0 sm:right-0 right-[-140px] lg:w-[400px] md:w-80 sm:w-80 w-80 rounded-md h-96"
                 :class="{ 'hidden': !status, 'scale-in': scaleIn, 'scale-out': scaleOut }">
                 <ul class="list-none p-2 w-full overflow-y-auto scroll-smooth h-[345px] ">
                     <li v-for="(item, index) in data" :key="index"
-                        class="flex bg-white p-2 mb-2 rounded-md hover:bg-indigo-200 max-h-24 min-h-2 cursor-pointer ">
+                        class="flex bg-white p-2 mb-2 rounded-md hover:bg-indigo-200 max-h-28 min-h-2 cursor-pointer ">
                         <div class="flex flex-col max-w-20">
-                            <img src="https://demoda.vn/wp-content/uploads/2023/01/hinh-avatar-cute-ca-tinh-cho-nam-726x600.jpg"
-                                alt="" class="bg-white rounded-full border border-gray-400 w-16 object-contain h-16">
+                            <img :src="item.avata" alt=""
+                                class="bg-white rounded-full border border-gray-400 min-w-16 max-w-16 object-cover min-h-16 max-h-16 ">
                             <span class="text-gray-900 font-bold text-base text-center truncate">{{ item.user }}</span>
                         </div>
                         <div class="flex flex-col px-2 w-full max-w-full">
@@ -45,14 +47,7 @@
 </template>
 
 
-
-
 <script>
-// import { ref } from "vue";
-// import Listbox from 'primevue/listbox';
-// const selectedNoti = ref();
-// const notifications = ref();
-
 export default {
     name: 'MenuNotifice',
     data() {
@@ -75,10 +70,23 @@ export default {
                     content: 'Hàng như ***',
                     read: true,
                 },
+                {
+                    user: 'Anh Bảy',
+                    avata: 'https://demoda.vn/wp-content/uploads/2022/01/anh-avatar-hai-meo-cuoi-mim-481x600.jpg',
+                    action: 'Đặt câu hỏi',
+                    content: 'Cái ly này có đựng được nước không',
+                    read: false,
+                },
             ]
         }
     },
     methods: {
+        // handleClickOutside(event) {
+        //     const isClickInside = this.$el.contains(event.target);
+        //     if (!isClickInside && this.status) {
+        //         this.changeStatus();
+        //     }
+        // },
         changeStatus: function () {
             if (this.status) {
                 this.scaleOut = true
