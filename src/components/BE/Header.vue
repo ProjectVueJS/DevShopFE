@@ -1,12 +1,17 @@
 <template>
-    <div id="header-admin" class="bg-blue-950 w-full flex flex-row py-2">
+    <div id="header-admin" class="bg-blue-950 w-full flex flex-row px-2 py-1">
         <!-- <slot name="sidebarStatusBtn"></slot> -->
-        <Button class="bg-blue-700 sm:hidden lg:hidden md:hidden block" label="" icon="pi pi-bars"
-            @click="visible = true" :aria-controls="visible ? 'sbar' : null" :aria-expanded="visible"
-            :class="$style.sidebarStatusBtn" />
-        <div class="flex">
-            <MenuDropdown />
-            <!-- avata -->
+        <div class="flex w-full md:justify-end lg:justify-end sm:justify-end justify-between items-center">
+            <Button class="sm:hidden lg:hidden md:hidden block" label="" icon="pi pi-bars"
+                @click="visible = true" :aria-controls="visible ? 'sbar' : null" :aria-expanded="visible"
+                :class="$style.sidebarStatusBtn" />
+            <div class="flex">
+                <MenuNotifice />
+                <div class="text-white flex items-center">
+                    <p>This is my name</p>
+                    <img src="https://cdn.icon-icons.com/icons2/1429/PNG/512/icon-robots-6_98541.png" class="rounded-full w-16" alt="">
+                </div>
+            </div>
         </div>
 
         <div id="mobile-sidebar">
@@ -89,7 +94,7 @@
 import { ref } from "vue";
 import Sidebar from 'primevue/sidebar';
 import Button from "primevue/button"
-import MenuDropdown from '@/common/MenuDropdown';
+import MenuNotifice from '@/common/MenuNotifice';
 const visible = ref(false);
 </script>
 
@@ -98,7 +103,7 @@ const visible = ref(false);
 export default {
     name: 'HeaderAdmin',
     components: {
-        MenuDropdown,
+        MenuNotifice,
     }
 }
 </script>
@@ -107,5 +112,7 @@ export default {
 .sidebarStatusBtn {
     padding: 5px !important;
     background: red !important;
+    width: 50px;
+    height: 30px;
 }
 </style>
