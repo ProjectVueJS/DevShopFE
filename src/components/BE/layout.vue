@@ -8,8 +8,11 @@ import HeaderAdmin from "./Header"
 <template>
     <div id="admin-layout" class="flex lg:flex-row md:flex-row sm:flex-row flex-col">
         <SideBar />
-        <div class="bg-green-600 w-full">
+        <div class="bg-blue-950 w-full">
             <HeaderAdmin />
+            <div id="main-content" class="bg-white overflow-hidden overflow-y-auto md:rounded-tl-lg lg:rounded-tl-lg" :style="{height: 'calc(100vh - 56px)'}">
+
+            </div>
         </div>
         <!-- <slot name="template"></slot> -->
     </div>
