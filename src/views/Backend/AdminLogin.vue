@@ -105,8 +105,8 @@ export default {
       showPass: false,
       bgLogin: bgLogin,
       showNotifice: true,
-      typeNotifice: 'danger',
-      messageNotifice: 'danger',
+      typeNotifice: 'warn',
+      messageNotifice: 'success',
 
     };
   },
