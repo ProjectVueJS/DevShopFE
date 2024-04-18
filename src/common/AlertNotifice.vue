@@ -1,10 +1,10 @@
 <template>
-    <span v-show="isVisible" @mouseover="cancelHide" @mouseleave="restartTimer" id="notifice"
-        class="border rounded-md px-2 py-3 font-medium w-72 max-w-full fixed right-5 top-5"
+    <div v-show="isVisible" @mouseover="cancelHide" @mouseleave="hideAlert" id="notifice"
+        class="border rounded-md px-2 py-3 font-medium w-auto min-w-72 fixed right-2 top-2"
         :class="styleAlert">
-        <i class="pi pi-check"></i>
+        <i :class="iconAlert"></i>
         {{ message }}
-    </span>
+    </div>
 </template>
 
 <script>
@@ -26,36 +26,40 @@ export default {
             hover: false,
             countDown: null,
             timer: 2000,
-            styleAlert: 'bg-green-100 text-green-500 border-green-500'
+            styleAlert: 'bg-green-100 text-green-500 border-green-500',
+            iconAlert: 'pi pi-check'
         }
     },
     methods: {
         cancelHide() {
             console.log('cancelHide');
             clearTimeout(this.countDown);
-            console.log(clearTimeout(this.countDown));
             this.hover = true;
         },
-        restartTimer() {
-            console.log('restartTimer');
+        hideAlert() {
+            console.log('hideAlert');
             this.hover = false;
+            this.$emit('resetAlertStatus'); //call method on parent component
         }
     },
     created() {
         console.log('created ' + this.typeAlert);
         if (this.typeAlert === 'error') {
             this.styleAlert = 'bg-red-100 text-red-500 border-red-500';
-            console.log(this.styleAlert);
+            this.iconAlert = 'pi pi-times-circle';
+            // console.log(this.styleAlert);
         } else if(this.typeAlert === 'warn') {
             this.styleAlert = 'bg-yellow-100 text-yellow-500 border-yellow-500';
-            console.log(this.styleAlert);
+            this.iconAlert = 'pi pi-exclamation-triangle';
+            // console.log(this.styleAlert);
         }
-        console.log(this.timer = setInterval(() => {
+        this.countDown = setInterval(() => {
             if (!this.hover) {
                 this.isVisible = false;
+                this.$emit('resetAlertStatus'); //call method on parent component
                 clearInterval(this.timer); // Stop the timer after hiding the notification
             }
-        }, this.timer));
+        }, this.timer)
     }
 }
 </script>

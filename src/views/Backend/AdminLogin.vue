@@ -80,13 +80,16 @@
       <pre class="text-red-700">{{ response !== '' ? response : '' }}</pre> -->
     </div>
   </section>
-  <AlertNotifice v-if="showNotifice" :typeAlert="typeNotifice" :message="messageNotifice"/>
+  <AlertNotifice v-if="showNotifice" @resetAlertStatus="resetAlertStatus" :typeAlert="typeNotifice"
+    :message="messageNotifice" />
 </template>
 
 <script>
 import bgLogin from "@/assets/imgs/app/be-bg-login.png"
 import axios from "axios";
 import AlertNotifice from "@/common/AlertNotifice.vue";
+import { setCookie, getUser } from "@/cookie/cookieManager";
+
 export default {
   name: "AdminLogin",
   components: {
@@ -104,21 +107,19 @@ export default {
       remember: false,
       showPass: false,
       bgLogin: bgLogin,
-      showNotifice: true,
-      typeNotifice: 'warn',
+      showNotifice: false,
+      typeNotifice: 'success',
       messageNotifice: 'success',
 
+
     };
-  },
-  created() {
-    // console.log(this.apiUrl);
   },
   methods: {
     handleLogin() {
 
       console.log('error account: ' + this.errors.account.length);
       console.log('error password: ' + this.errors.password.length);
-      // this.validate();
+      this.validate();
       this.resetErrors();
       if (this.errors.account.length !== 0 || this.errors.password.length !== 0) {
         return false;
@@ -146,35 +147,31 @@ export default {
         });
         let data = response.data;
         if (data.status) {
-          console.log('notifice');
+          // console.log('notifice');
           this.showNotifice = true;
           this.typeNotifice = 'success';
           this.messageNotifice = data.message;
-          
-          // setTimeout(() => {
-          //   this.showNotifice = false;
-          // }, 2000);
+          // console.log('login true');
+          let timeLife = parseInt(data.expires_in) === 7200 ? 7200 : (parseInt(data.expires_in) / 60) / 60 / 24 + 'd';
+          // console.log(timeLife);
+          setCookie('token', data.token, timeLife);
+          setCookie('user', data.user, timeLife);
         } else {
+          // console.log('login false');
           this.showNotifice = true;
-          this.typeNotifice = 'error';          
-          this.messageNotifice = data.message;          
-          // setTimeout(() => {
-          //   this.showNotifice = false;
-          // }, 2000);
+          this.typeNotifice = 'error';
+          this.messageNotifice = data.message;
         }
-
         // this.showNotifice = ''
       } catch (error) {
 
-        console.log(error.response.status);
+        // console.log(error.response.status);
         if (error.response.status == 422) {
           data = error.response.data;
           this.response = data;
           let errors = data.data;
-          // console.log('reponse account: ' + errors.account.length);
-          console.log(errors.account);
-          // console.log('reponse password: ' + errors.password.length);
-          console.log(errors.password);
+          // console.log(errors.account);
+          // console.log(errors.password);
           if (errors.account) {
             this.errors.account.push(errors.account[0])
           }
@@ -191,9 +188,14 @@ export default {
         account: [],
         password: [],
       };
+    },
+    resetAlertStatus() {
+      this.showNotifice = false
     }
-
-
   },
-};
+  created() {
+    console.log(getUser());
+  }
+
+}
 </script>
