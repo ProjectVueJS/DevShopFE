@@ -13,6 +13,9 @@ export function getCookie(name) {
 export function getUser() {
     return VueCookies.get('user');
 }
+export function getToken() {
+    return VueCookies.get('token');
+}
 
 // // Xóa cookie
 // export function removeCookie(name) {
