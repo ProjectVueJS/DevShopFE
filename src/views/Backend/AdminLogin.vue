@@ -84,18 +84,6 @@
     :message="messageNotifice" />
 </template>
 
-
-
-<script setup>
-    // account: "",
-    //   password: "",
-    //   remember: false,
-  const account = ref('')
-  const password = ref('')
-  const remember = ref(false)
-</script>
-
-
 <script>
 import bgLogin from "@/assets/imgs/app/be-bg-login.png"
 // import axios from "axios";
@@ -103,8 +91,7 @@ import axios from "@/config/axios"
 import AlertNotifice from "@/common/AlertNotifice.vue";
 import { setCookie, getUser, getToken } from "@/cookie/cookieManager";
 import router from "@/router";
-import { ref } from 'vue';
-
+import form from "@/utilities/form"
 export default {
   name: "AdminLogin",
   components: {
@@ -117,9 +104,9 @@ export default {
         password: [],
       },
       // response: '',
-      // account: "",
-      // password: "",
-      // remember: false,
+      account: "",
+      password: "",
+      remember: false,
       showPass: false,
       bgLogin: bgLogin,
       showNotifice: false,
@@ -135,7 +122,11 @@ export default {
       console.log('error account: ' + this.errors.account.length);
       console.log('error password: ' + this.errors.password.length);
       // this.validate();
-      this.resetErrors();
+      
+      
+      if (this.errors.account.length !== 0 || !this.errors.password.length !== 0) this.resetErrors();
+      this.errors = form.adminLoginValidate(this.account, this.password);
+      
       if (this.errors.account.length !== 0 || this.errors.password.length !== 0) {
         return false;
       } else {
