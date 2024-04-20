@@ -87,11 +87,13 @@
 <script>
 import bgLogin from "@/assets/imgs/app/be-bg-login.png"
 // import axios from "axios";
-import axios from "@/config/axios"
+// import axios from "@/config/axios"
 import AlertNotifice from "@/common/AlertNotifice.vue";
 import { setCookie, getUser, getToken } from "@/cookie/cookieManager";
 import router from "@/router";
 import form from "@/utilities/form"
+import AuthService from "@/service/authService";
+
 export default {
   name: "AdminLogin",
   components: {
@@ -133,45 +135,31 @@ export default {
         this.login();
       }
     },
-    validate() {
-      this.resetErrors();
-      if (!this.account) this.errors.account.push("Tài khoản không được bỏ trống.");
-      if (!this.password) {
-        this.errors.password.push("Mật khẩu không được bỏ trống.");
-      } else if (this.password.length < 6) {
-        this.errors.password.push("Mật khẩu phải lớn hơn hoặc bằng 6 ký tự.");
-      }
-    },
     async login() {
       this.resetErrors();
-      // let data = '';
       try {
-        // const response = await axios.post(`${this.apiUrl}/auth/login`, {
-        const response = await axios.post(`/auth/login`, {
+        let response = await AuthService.login({
           account: this.account,
           password: this.password,
           remember: this.remember,
-        });
+        })
         if (response.status) {
-          // console.log('notifice');
           this.showNotifice = true;
           this.typeNotifice = 'success';
           this.messageNotifice = response.message;
-          // console.log('login true');
           setTimeout(() => {
             router.push({ name: 'dashboard.index' })
           }, 1500);
-          let timeLife = parseInt(response.expires_in) === 7200 ? 7200 : (parseInt(response.expires_in) / 60) / 60 / 24 + 'd';
-          // console.log(timeLife);
-          setCookie('token', response.token, timeLife);
-          setCookie('user', response.user, timeLife);
+
+          // let timeLife = parseInt(response.expires_in) === 7200 ? 7200 : (parseInt(response.expires_in) / 60) / 60 / 24 + 'd';
+          // timeLife = response.expires_in
+          setCookie('token', response.token, response.expires_in);
+          setCookie('user', response.user, response.expires_in);
         } else {
-          // console.log('login false');
           this.showNotifice = true;
           this.typeNotifice = 'error';
           this.messageNotifice = response.message;
         }
-        // this.showNotifice = ''
       } catch (errors) {
         let data = errors.data
         // console.log(data);
@@ -209,7 +197,7 @@ export default {
     // console.log(getUser());
     if (getToken() || getUser()) {
       console.log('logged');
-      // router.push({ name: 'dashboard.index' })
+      router.push({ name: 'dashboard.index' })
     }
 
   },

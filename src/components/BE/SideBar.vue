@@ -56,6 +56,40 @@
                                     <span class="mx-4 font-medium lg:text-base md:text-sm">Settings</span>
                                 </a>
                             </li>
+                            <li>
+                                <a class="flex justify-between items-center px-4 py-2 mt-3 text-white rounded-md hover:bg-[#5064aa]"
+                                    href="#" @click="toggleMenu" parent-toggle-menu="Administration">
+                                    <div class="">
+                                        <i class="pi pi-cog"></i>
+                                        <span class="mx-4 font-medium lg:text-base md:text-sm">Administration</span>
+                                    </div>
+                                    <i class="pi pi-angle-right"></i>
+                                </a>
+                            </li>
+                            <li child-toggle-menu="Administration" style="display: none;">
+                                <ul class="bg-[#5064aa] w-full rounded-md">
+                                    <li>
+                                        <a class="flex items-center py-2 ps-5 mt-2 text-white hover:rounded-t-md hover:bg-blue-800"
+                                            href="#">
+                                            <span class="ms-5 font-medium lg:text-base md:text-sm">User
+                                                Management</span>
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a class="flex items-center py-2 ps-5 mt-2 text-white hover:bg-blue-800"
+                                            href="#">
+                                            <span class="ms-5 font-medium lg:text-base md:text-sm">Collaborators</span>
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a class="flex items-center py-2 ps-5 mt-2 text-white hover:rounded-b-md hover:bg-blue-800"
+                                            href="#">
+                                            <span class="ms-5 font-medium lg:text-base md:text-sm">Role &
+                                                Permission</span>
+                                        </a>
+                                    </li>
+                                </ul>
+                            </li>
                         </ul>
                     </aside>
                 </div>
@@ -65,15 +99,24 @@
 
     </div>
 </template>
-<!-- <script setup>
-import { ref } from "vue";
-import Sidebar from 'primevue/sidebar';
-// import Button from "primevue/button"
-const visible = ref(false);
-</script> -->
 <script>
 
 export default {
     name: 'SideBar',
+    methods: {
+        toggleMenu(event) {
+            event.preventDefault();
+            var parentToggleMenu = event.currentTarget.getAttribute('parent-toggle-menu');
+            var parentIcon = document.querySelector(`[parent-toggle-menu="${parentToggleMenu}"]`).lastElementChild;
+            var childToggleMenu = document.querySelector(`[child-toggle-menu="${parentToggleMenu}"]`);
+            if (childToggleMenu.style.display === 'none') {
+                parentIcon.classList.value = 'pi pi-angle-down'
+                childToggleMenu.style.display = 'block';
+            } else {
+                parentIcon.classList.value = 'pi pi-angle-right'
+                childToggleMenu.style.display = 'none';
+            }
+        }
+    }
 }
 </script>

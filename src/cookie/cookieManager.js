@@ -17,6 +17,7 @@ export function getToken() {
     return VueCookies.get('token');
 }
 
+
 // // Xóa cookie
 // export function removeCookie(name) {
 //   Vue.$cookies.remove(name);
