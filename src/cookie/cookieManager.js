@@ -16,7 +16,14 @@ export function getUser() {
 export function getToken() {
     return VueCookies.get('token');
 }
-
+export function getExpiredLogin() {
+    return VueCookies.get('expired_login');
+}
+export function removeCookieLogin() {
+    VueCookies.remove('expired_login');
+    VueCookies.remove('token');
+    VueCookies.remove('user');
+}
 
 // // Xóa cookie
 // export function removeCookie(name) {

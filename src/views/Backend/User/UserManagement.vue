@@ -1,5 +1,12 @@
+<script setup>
+import Layout from '@/components/BE/Layout.vue';
+</script>
 <template>
-    <div class="">Customer Management</div>
+    <Layout>
+        <template #template>
+            <h2>User Management</h2>
+        </template>
+    </Layout>
 </template>
 
 <script>

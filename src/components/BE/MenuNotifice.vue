@@ -80,20 +80,14 @@ export default {
         }
     },
     methods: {
-        // handleClickOutside(event) {
-        //     const isClickInside = this.$el.contains(event.target);
-        //     if (!isClickInside && this.status) {
-        //         this.changeStatus();
-        //     }
-        // },
         changeStatus: function () {
-            console.log('changeStatus');
+            // console.log('changeStatus');
             if (this.status) {
                 this.scaleOut = true
                 this.scaleIn = false
                 setTimeout(() => {
                     this.status = false
-                }, 500);
+                }, 400);
             } else {
                 this.scaleOut = false
                 this.status = true
@@ -107,46 +101,14 @@ export default {
 
 <style scoped>
 .scale-in {
-    animation: scaleIn 0.5s forwards;
+    animation: scaleIn 0.4s forwards;
     transform-origin: top right;
 
 }
 
 .scale-out {
-    animation: scaleOut 0.5s forwards;
+    animation: scaleOut 0.4s forwards;
     transform-origin: top right;
 }
 
-@media only screen and (max-width: 638px) {
-    .scale-in {
-        animation: scaleIn 0.5s forwards;
-        transform-origin: top;
-
-    }
-
-    .scale-out {
-        animation: scaleOut 0.5s forwards;
-        transform-origin: top;
-    }
-}
-
-@keyframes scaleIn {
-    from {
-        transform: scale(0);
-    }
-
-    to {
-        transform: scale(1);
-    }
-}
-
-@keyframes scaleOut {
-    from {
-        transform: scale(1);
-    }
-
-    to {
-        transform: scale(0);
-    }
-}
 </style>

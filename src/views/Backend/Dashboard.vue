@@ -8,7 +8,6 @@ import Layout from '@/components/BE/Layout.vue';
             <h2>admin dashboard</h2>
         </template>
     </Layout>
-
 </template>
 
 <script>

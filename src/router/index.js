@@ -2,6 +2,7 @@ import { createRouter, createWebHistory } from 'vue-router'
 // import HomeView from '../views/HomeView.vue'
 import AdminLogin from '@/views/Backend/AdminLogin.vue'
 import AdminDashboard from '@/views/Backend/Dashboard.vue'
+import UserManagement from '@/views/Backend/User/UserManagement.vue'
 
 const routes = [
   {
@@ -11,8 +12,13 @@ const routes = [
   },
   {
     path: '/dashboard',
-    name: 'dashboard.index',
+    name: 'admin.dashboard',
     component: AdminDashboard,
+  },
+  {
+    path: '/user-management',
+    name: 'admin.user.mng',
+    component: UserManagement,
   },
   // {
   //   path: '/',

@@ -124,11 +124,11 @@ export default {
       console.log('error account: ' + this.errors.account.length);
       console.log('error password: ' + this.errors.password.length);
       // this.validate();
-      
-      
+
+
       if (this.errors.account.length !== 0 || !this.errors.password.length !== 0) this.resetErrors();
       this.errors = form.adminLoginValidate(this.account, this.password);
-      
+
       if (this.errors.account.length !== 0 || this.errors.password.length !== 0) {
         return false;
       } else {
@@ -148,11 +148,12 @@ export default {
           this.typeNotifice = 'success';
           this.messageNotifice = response.message;
           setTimeout(() => {
-            router.push({ name: 'dashboard.index' })
+            location.href = '/dashboard';
           }, 1500);
 
           // let timeLife = parseInt(response.expires_in) === 7200 ? 7200 : (parseInt(response.expires_in) / 60) / 60 / 24 + 'd';
           // timeLife = response.expires_in
+          setCookie('expired_login', response.expires_in, response.expires_in);
           setCookie('token', response.token, response.expires_in);
           setCookie('user', response.user, response.expires_in);
         } else {
