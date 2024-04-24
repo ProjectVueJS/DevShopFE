@@ -88,7 +88,7 @@
 import bgLogin from "@/assets/imgs/app/be-bg-login.png"
 // import axios from "axios";
 // import axios from "@/config/axios"
-import AlertNotifice from "@/common/AlertNotifice.vue";
+// import AlertNotifice from "@/common/AlertNotifice.vue";
 import { setCookie, getUser, getToken } from "@/cookie/cookieManager";
 import router from "@/router";
 import form from "@/utilities/form"
@@ -96,9 +96,9 @@ import AuthService from "@/service/authService";
 
 export default {
   name: "AdminLogin",
-  components: {
-    AlertNotifice
-  },
+  // components: {
+  //   AlertNotifice
+  // },
   data() {
     return {
       errors: {
@@ -198,7 +198,7 @@ export default {
     // console.log(getUser());
     if (getToken() || getUser()) {
       console.log('logged');
-      router.push({ name: 'dashboard.index' })
+      router.push('/dashboard')
     }
 
   },

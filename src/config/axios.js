@@ -15,9 +15,13 @@ axios.interceptors.response.use(
 )
 // axios.defaults.withCredentials = true;
 axios.defaults.baseURL = process.env.VUE_APP_LOCAL_URL;
-console.log(process.env.VUE_APP_LOCAL_URL);
+axios.defaults.baseURL = 'http://app.local/';
+// console.log(process.env.VUE_APP_LOCAL_URL);
 axios.defaults.headers.common['Content-Type'] = 'application/json'
+
 if (getToken()) {
     axios.defaults.headers.common['Authorization'] = getToken()
 }
+axios.defaults.withCredentials = true;
+axios.defaults.withXSRFToken = true;
 export default axios;

@@ -1,4 +1,5 @@
 <template>
+    <LoadingVue v-if="loading" />
     <div id="admin-layout" class="flex lg:flex-row md:flex-row sm:flex-row flex-col">
         <SideBar :menu="menu" />
         <div class="bg-blue-950 w-full">
@@ -28,7 +29,8 @@ export default {
     },
     data() {
         return {
-            menu: []
+            menu: [],
+            loading: true
         }
     },
     methods: {
@@ -37,9 +39,11 @@ export default {
             if (response.status) {
                 // console.log('api');
                 this.menu = response.menu;
+                this.loading = false
             } else {
                 // console.log('local');
                 this.menu = adminSideBar[this.lang]
+                this.loading = false
             }
         }
     }
