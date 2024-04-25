@@ -93,6 +93,7 @@ import { setCookie, getUser, getToken } from "@/cookie/cookieManager";
 import router from "@/router";
 import form from "@/utilities/form"
 import AuthService from "@/service/authService";
+import "@/utilities/lang/authLang";
 
 export default {
   name: "AdminLogin",
@@ -147,9 +148,9 @@ export default {
           this.showNotifice = true;
           this.typeNotifice = 'success';
           this.messageNotifice = response.message;
-          setTimeout(() => {
-            location.href = '/dashboard';
-          }, 1500);
+          // setTimeout(() => {
+          //   location.href = '/dashboard';
+          // }, 1500);
 
           // let timeLife = parseInt(response.expires_in) === 7200 ? 7200 : (parseInt(response.expires_in) / 60) / 60 / 24 + 'd';
           // timeLife = response.expires_in

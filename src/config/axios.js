@@ -14,8 +14,8 @@ axios.interceptors.response.use(
     }
 )
 // axios.defaults.withCredentials = true;
-axios.defaults.baseURL = process.env.VUE_APP_LOCAL_URL;
-axios.defaults.baseURL = 'http://app.local/';
+axios.defaults.baseURL = process.env.VUE_APP_LOCAL_URL ? process.env.VUE_APP_LOCAL_URL : 'http://app.local/api/';
+axios.defaults.baseURL = 'http://app.local/api/';
 // console.log(process.env.VUE_APP_LOCAL_URL);
 axios.defaults.headers.common['Content-Type'] = 'application/json'
 

@@ -5,17 +5,17 @@ export default class AuthService extends MasterService {
         super()
     }
     static async login(credentials) {
-        await this.getCsrfCookie()
-        return await axios.post(`api/auth/login`, credentials);
+        // await this.getCsrfCookie()
+        return await axios.post(`auth/login`, credentials);
     }
     static forgotPassword() {
-        return axios.post(`api/auth/forgot-password`);
+        return axios.post(`auth/forgot-password`);
     }
     static logout() {
-        return axios.post(`api/auth/logout`);
+        return axios.post(`auth/logout`);
     }
     static refreshToken() {
-        return axios.post(`api/auth/token-refresh`);
+        return axios.post(`auth/token-refresh`);
     }
 
 }
