@@ -94,12 +94,13 @@ import router from "@/router";
 import form from "@/utilities/form"
 import AuthService from "@/service/authService";
 import "@/utilities/lang/authLang";
+import { authLang } from "@/utilities/lang/authLang";
 
 export default {
   name: "AdminLogin",
-  // components: {
-  //   AlertNotifice
-  // },
+  created() {
+    // console.log(authLang[this.lang]);
+  },
   data() {
     return {
       errors: {
@@ -115,8 +116,6 @@ export default {
       showNotifice: false,
       typeNotifice: 'success',
       messageNotifice: 'success',
-
-
     };
   },
   methods: {
@@ -128,7 +127,7 @@ export default {
 
 
       if (this.errors.account.length !== 0 || !this.errors.password.length !== 0) this.resetErrors();
-      this.errors = form.adminLoginValidate(this.account, this.password);
+      this.errors = form.adminLoginValidate(this.account, this.password, this.lang);
 
       if (this.errors.account.length !== 0 || this.errors.password.length !== 0) {
         return false;
@@ -147,20 +146,18 @@ export default {
         if (response.status) {
           this.showNotifice = true;
           this.typeNotifice = 'success';
-          this.messageNotifice = response.message;
-          // setTimeout(() => {
-          //   location.href = '/dashboard';
-          // }, 1500);
+          this.messageNotifice = authLang[response.user.lang][response.message];
+          setTimeout(() => {
+            location.href = '/admin/dashboard';
+          }, 1500);
 
-          // let timeLife = parseInt(response.expires_in) === 7200 ? 7200 : (parseInt(response.expires_in) / 60) / 60 / 24 + 'd';
-          // timeLife = response.expires_in
           setCookie('expired_login', response.expires_in, response.expires_in);
           setCookie('token', response.token, response.expires_in);
           setCookie('user', response.user, response.expires_in);
         } else {
           this.showNotifice = true;
           this.typeNotifice = 'error';
-          this.messageNotifice = response.message;
+          this.messageNotifice = authLang[this.lang][response.message];
         }
       } catch (errors) {
         let data = errors.data
@@ -168,6 +165,7 @@ export default {
         this.showNotifice = true;
         this.typeNotifice = 'error';
         this.messageNotifice = data.message;
+
 
         if (errors.status == 422) {
           let error = data.data;
@@ -199,7 +197,7 @@ export default {
     // console.log(getUser());
     if (getToken() || getUser()) {
       console.log('logged');
-      router.push('/dashboard')
+      router.push('/admin/dashboard')
     }
 
   },

@@ -4,8 +4,8 @@
     >
     <!-- :to="{ name: 'Home' }" -->
         <router-link
-            to="/dashboard"
-            class="button bg-blue-500 text-white border-blue-500 px-8 py-4 font-bold text-2xl rounded"
+            to="/admin/dashboard"
+            class="button bg-blue-800 text-white border-blue-500 px-8 py-4 font-bold text-2xl rounded"
             >Go to Homepage</router-link
         >
     </div>
@@ -17,6 +17,7 @@ export default {}
 <style lang="scss" scoped>
 .bg-notfound {
     background-image: url('../assets/imgs/app/404.png');
+    opacity: 0.9;
     background-repeat: no-repeat;
     background-size: cover;
     background-position: center;

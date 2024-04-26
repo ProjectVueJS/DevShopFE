@@ -4,10 +4,9 @@
         <SideBar :menu="menu" />
         <div class="bg-blue-950 w-full">
             <HeaderAdmin :menu="menu" />
-            <div id="main-content" class="bg-white overflow-hidden overflow-y-auto md:rounded-tl-lg lg:rounded-tl-lg" 
+            <div id="main-content" class="bg-white overflow-hidden overflow-y-auto md:rounded-tl-lg lg:rounded-tl-lg p-2" 
                 :style="{height: 'calc(100vh - 56px)'}">
-                <!-- <slot name="template"></slot> -->
-                <router-view/>
+                <router-view />
             </div>
         </div>
     </div>

@@ -4,6 +4,8 @@ import AdminLogin from '@/views/Backend/AdminLogin.vue'
 import AdminDashboard from '@/views/Backend/Dashboard.vue'
 import UserManagement from '@/views/Backend/User/UserManagement.vue'
 import LayoutAdmin from '@/components/BE/Layout.vue'
+import PageNotFound from '@/common/PageNotFound.vue'
+// import PageNotFound from '@/common/PageNotFound.vue'
 
 const routes = [
   // {
@@ -30,16 +32,21 @@ const routes = [
     component: LayoutAdmin,
     children: [
       {
-        path: '/dashboard',
+        path: 'dashboard',
         component: AdminDashboard
       },
       {
-        path: '/user-management',
+        path: 'user-management',
         name: 'admin.user.mng',
         component: UserManagement,
       },
     ]
   },
+  {
+    path: '/:pathMatch(.*)*',
+    component: PageNotFound
+  }
+
 ]
 
 const router = createRouter({
