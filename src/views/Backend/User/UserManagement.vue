@@ -17,7 +17,7 @@
 <script>
 
 import UserService from '@/service/userService';
-import DataTableVue from '@/components/BE/tables/DataTable.vue';
+import DataTableVue from '@/components/BE/tables/UserTable.vue';
 import UserFilter from '@/components/BE/filter/UserFilter.vue';
 import BreadcrumbVue from '@/common/Breadcrumb.vue';
 BreadcrumbVue
