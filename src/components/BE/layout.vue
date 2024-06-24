@@ -1,29 +1,21 @@
 <template>
     <LoadingVue v-if="loading" />
     <div id="admin-layout" class="flex lg:flex-row md:flex-row sm:flex-row flex-col">
-        <SideBar :menu="menu" />
-        <div class="bg-blue-950 w-full">
+        <SideBar class="flex-none" :menu="menu" />
+        <div id="right-layout" class="bg-blue-950">
             <HeaderAdmin :menu="menu" />
-            <div id="main-content" class="bg-white overflow-hidden overflow-y-auto md:rounded-tl-lg lg:rounded-tl-lg p-2" 
-                :style="{height: 'calc(100vh - 56px)'}">
+
+
+            <!-- overflow-auto  -->
+            <div id="main-content" class="md:rounded-tl-lg lg:rounded-tl-lg p-2 bg-white w-full overflow-auto"
+                :style="{ minHeight: 'calc(100vh - 56px)' }">
                 <router-view />
             </div>
         </div>
     </div>
 </template>
-<!-- <template>
-    <LoadingVue v-if="loading" />
-    <div id="admin-layout" class="flex lg:flex-row md:flex-row sm:flex-row flex-col">
-        <SideBar :menu="menu" />
-        <div class="bg-blue-950 w-full">
-            <HeaderAdmin :menu="menu" />
-            <div id="main-content" class="bg-white overflow-hidden overflow-y-auto md:rounded-tl-lg lg:rounded-tl-lg" 
-                :style="{height: 'calc(100vh - 56px)'}">
-                <slot name="template"></slot>
-            </div>
-        </div>
-    </div>
-</template> -->
+
+
 
 <script>
 import ConfigService from '@/service/configService';
@@ -47,7 +39,7 @@ export default {
     },
     methods: {
         async fetchMenu() {
-            const response = await ConfigService.getMenu(this.lang)
+            const response = await ConfigService.getMenu()
             if (response.status) {
                 // console.log('api');
                 this.menu = response.menu;
@@ -61,3 +53,22 @@ export default {
     }
 }
 </script>
+
+<style lang="scss" scoped>
+// @media (max-width: 768px) {}
+
+#admin-layout {
+    #right-layout {
+        width: calc(100% - 320px);
+    }
+
+    /* 
+    */
+    @media (max-width: 768px) {
+        overflow: auto;
+        #right-layout {
+        width: 100%;
+    }
+    }
+}
+</style>

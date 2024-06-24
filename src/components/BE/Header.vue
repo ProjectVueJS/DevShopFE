@@ -18,9 +18,9 @@
                 <MenuNotifice />
                 <div class="text-white flex items-center relative cursor-pointer">
                     <div class="flex items-center" @click="changeStatusMenuAvata">
-                        <p class="px-2">
+                        <p class="px-2 sm:text-sm text-xs">
                             Admin
-                            <i class="pi pi-angle-down cursor-pointer" @click="changeStatus" />
+                            <i class="pi pi-angle-down cursor-pointer sm:text-sm text-xs" @click="changeStatus" />
 
                         </p>
                         <img src="https://cdn.icon-icons.com/icons2/1429/PNG/512/icon-robots-6_98541.png"
@@ -31,7 +31,7 @@
                         :class="{ 'hidden': !MenuAvataStatus, 'scale-in': scaleIn, 'scale-out': scaleOut }">
                         <div v-for="(item, index) in DataMenuAvata" :key="`adminMenuAvata_${index}`">
                             <router-link :to="item.linkTo"
-                                class="flex bg-white hover:bg-indigo-200 p-2 text-gray-800 cursor-pointer"
+                                class="flex bg-white hover:bg-indigo-200 p-2 text-gray-800 cursor-pointer sm:text-sm text-xs"
                                 :class="{ 'rounded-t-md': index === 0, 'rounded-b-md': (index + 1) === DataMenuAvata.length }"
                                 @click="logout(item.action)">
                                 {{ item.name }}

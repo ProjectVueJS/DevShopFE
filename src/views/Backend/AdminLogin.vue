@@ -195,11 +195,10 @@ export default {
   beforeCreate() {
     // console.log('beforeCreate');
     // console.log(getUser());
-    if (getToken() || getUser()) {
+    if (getToken() && getUser()) {
       console.log('logged');
       router.push('/admin/dashboard')
     }
-
   },
   // created() {
   // }

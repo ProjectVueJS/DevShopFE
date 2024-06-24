@@ -6,7 +6,7 @@
         <div name="lang" value="vi"
             class="h-[30px] ms-2 lg:ms-4 md:ms-4 sm:ms-0 w-32 max-w-auto cursor-pointer bg-white rounded-md select-none text-center border border-gray-500"
             @click="changeStatusMenuLanguage">
-            <span class="">{{ language }}</span>
+            <span class="sm:text-sm text-xs">{{ language }}</span>
         </div>
         <ul class="z-10 absolute top-full right-0 list-none p-2 rounded-md w-32 max-w-auto h-auto shadow-md border border-gray-200 bg-white"
             :class="{ 'hidden': !MenuLanguageStatus, 'scale-in-t': scaleIn, 'scale-out-t': scaleOut }">
@@ -14,7 +14,7 @@
                        <span class="w-full block border-t border-gray-200"></span>
                        <li class="rounded-b-md flex bg-white hover:bg-indigo-200 p-2 text-gray-800 cursor-pointer" value="en" @click="changeLanguage('en')">Tiếng Anh</li> -->
             <div v-for="(item, index) in menuLang" :key="`lang_${index}`">
-                <li class="flex bg-white hover:bg-indigo-200 p-2 text-gray-800 cursor-pointer"
+                <li class="flex bg-white hover:bg-indigo-200 p-2 text-gray-800 cursor-pointer sm:text-sm text-xs"
                     :class="{ 'bg-indigo-200': item.active, 'rounded-t-md': index === 0, 'rounded-b-md': (index + 1) === menuLang.length }"
                     @click="changeLanguage(item.code)">
                     {{ item.name }}

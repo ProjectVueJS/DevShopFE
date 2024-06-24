@@ -19,7 +19,7 @@ if (getUser() && getUser().lang) {
     app.config.globalProperties.lang = getUser().lang;
     // console.log(this.lang);
 } else {
-    app.config.globalProperties.lang = 'vi';
+    app.config.globalProperties.lang = 'en';
 }
 app.component('AlertNotifice', AlertNotifice)
 app.component('LoadingVue', LoadingVue)

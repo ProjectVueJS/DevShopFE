@@ -155,7 +155,7 @@ import { btnLang } from '@/utilities/lang/btnLang';
 <!--  -->
 <script>
 export default {
-    name: 'DataTable',
+    name: 'ProductTable',
     components: {
         PaginateBar
     },

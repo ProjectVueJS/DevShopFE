@@ -88,20 +88,19 @@ import { textLang, inputGender, inputStatus } from '@/utilities/lang/textLang';
 <script>
 
 export default {
-    name: 'UserFilter',
+    name: 'ProductFilter',
     data() {
         return {
             text: textLang[this.lang],
             genderSelect: inputGender[this.lang],
             statusSelect: inputStatus[this.lang],
             filterParams: {
+                id: '',
                 name: '',
-                email: '',
-                username: '',
-                phone: '',
-                address: '',
-                role: '',
-                gender: '',
+                price: '',
+                brand: '',
+                category: '',
+                created_by: '',
                 status: '',
             },
             data: {},

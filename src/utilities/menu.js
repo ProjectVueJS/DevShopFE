@@ -3,14 +3,14 @@ export var adminSideBar = {
         {
             name: "Bảng Điều Khiển",
             icon: "pi pi-home",
-            linkTo: "/dashboard",
+            linkTo: "/admin/dashboard",
             active: false,
             child: []
         },
         {
             name: "Quản Lý Sản Phẩm",
             icon: "pi pi-th-large",
-            linkTo: "#",
+            linkTo: "/admin/product-management",
             active: false,
             child: []
         },
@@ -43,7 +43,7 @@ export var adminSideBar = {
             child: [
                 {
                     name: "Quản Lý Tài Khoản",
-                    linkTo: "/user-management",
+                    linkTo: "/admin/user-management",
                     active: false
                 },
                 {
@@ -76,14 +76,14 @@ export var adminSideBar = {
         {
             name: "Dashboard",
             icon: "pi pi-home",
-            linkTo: "/dashboard",
+            linkTo: "/admin/dashboard",
             active: false,
             child: []
         },
         {
             name: "Product Management",
             icon: "pi pi-th-large",
-            linkTo: "#",
+            linkTo: "/admin/product-management",
             active: false,
             child: []
         },
@@ -116,7 +116,7 @@ export var adminSideBar = {
             child: [
                 {
                     name: "User Management",
-                    linkTo: "/user-management",
+                    linkTo: "/admin/user-management",
                     active: false
                 },
                 {

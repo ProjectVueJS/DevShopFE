@@ -4,25 +4,24 @@
 <template>
     <!-- <h2>User Management</h2> -->
     <BreadcrumbVue class="mb-2" :breadcrumb="breadcrumb" />
+    <ProductFilter @paramFilter="handleParamFilter"/>
+    <ProductTable :query="query" />
 
-    <UserFilter @paramFilter="handleParamFilter" />
-    <!-- {{ query }} -->
-    <DataTableVue class="overflow-auto" :query="query" />
 
 </template>
 
 <script>
 
-import DataTableVue from '@/components/BE/tables/UserTable.vue';
-import UserFilter from '@/components/BE/filter/UserFilter.vue';
 import BreadcrumbVue from '@/common/Breadcrumb.vue';
+import ProductFilter from '@/components/BE/filter/ProductFilter.vue';
+import ProductTable from '@/components/BE/tables/ProductTable.vue';
 
 export default {
-    name: 'UserManagement',
+    name: 'ProductManagement',
     components: {
-        DataTableVue,
-        UserFilter,
-        BreadcrumbVue
+        BreadcrumbVue,
+        ProductTable,
+        ProductFilter
     },
     data() {
         return {
@@ -33,8 +32,7 @@ export default {
                     route: '/admin/dashboard'
                 },
                 items: [
-                    { label: 'Administration', icon: 'pi pi-microchip' },
-                    { label: 'User Management', route: '#' },
+                    { label: 'Product Management', icon: 'pi pi-microchip' },
                 ]
 
             }

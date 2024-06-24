@@ -63,3 +63,23 @@ export default {
     }
 }
 </script>
+
+<style>
+#notifice {
+    transition: 1s;
+    animation: left_right 0.2s ease-in;
+}
+@keyframes left_right {
+    from {
+        right: -300px;
+        opacity: 0;
+        /* top: -100px; */
+    }
+    
+    to {
+        right: 0;
+        opacity: 1;
+        /* top: 0; */
+    }
+}
+</style>

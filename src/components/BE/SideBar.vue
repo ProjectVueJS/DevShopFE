@@ -2,7 +2,7 @@
     <div>
         <!-- desktop/laptop -->
         <div id="website-sidebar" class="bg-blue-950">
-            <div class="lg:flex md:flex sm::flex hidden flex-col w-80 h-screen p-0 overflow-y-auto">
+            <div class="lg:flex md:flex hidden flex-col lg:w-80 h-screen p-0 overflow-y-auto">
                 <!-- <h2 class="text-3xl font-semibold text-center text-blue-800">Logo</h2> -->
                 <div class="logo-admin bg-[#1c1536] rounded-md cursor-pointer h-14 p-1">
                     <img src="../../assets/imgs/app/dev-logo.png" class="h-full object-contain mx-auto" alt="">
