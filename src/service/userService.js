@@ -13,10 +13,10 @@ export default class UserService {
         }
         ext += `&page=${page}&limit=${limit}`;
         // console.log(ext);
-        return axios.get(`admin/administration/user/list?${ext}`);
+        return axios.get(`admin/user/administration/user/list?${ext}`);
     }
 
     static createUser(data) {
-        return axios.post(`admin/administration/user/list/new-user`, data);
+        return axios.post(`admin/user/administration/user/list/new-user`, data);
     }
 }

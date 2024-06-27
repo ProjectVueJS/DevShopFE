@@ -13,14 +13,12 @@ axios.interceptors.response.use(
         }
     }
 )
-// axios.defaults.withCredentials = true;
 axios.defaults.baseURL = process.env.VUE_APP_LOCAL_URL ? process.env.VUE_APP_LOCAL_URL : 'http://app.local/api/';
 // console.log(process.env.VUE_APP_LOCAL_URL);
 axios.defaults.headers.common['Content-Type'] = 'application/json'
-
+axios.defaults.headers.common['X-Requested-With'] = 'XMLHttpRequest'
 if (getToken()) {
     axios.defaults.headers.common['Authorization'] = getToken()
 }
-axios.defaults.withCredentials = true;
-// axios.defaults.withXSRFToken = true;
+// axios.defaults.withCredentials = true;
 export default axios;

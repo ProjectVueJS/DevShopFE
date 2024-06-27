@@ -1,21 +1,17 @@
 import axios from "@/config/axios";
-import MasterService from "./masterService";
-export default class AuthService extends MasterService {
-    constructor() {
-        super()
-    }
+export default class AuthService {
     static async login(credentials) {
         // await this.getCsrfCookie()
-        return await axios.post(`auth/login`, credentials);
+        return await axios.post(`admin/auth/login`, credentials);
     }
     static forgotPassword() {
-        return axios.post(`auth/forgot-password`);
+        return axios.post(`admin/auth/forgot-password`);
     }
     static logout() {
-        return axios.post(`auth/logout`);
+        return axios.post(`admin/auth/logout`);
     }
     static refreshToken() {
-        return axios.post(`auth/token-refresh`);
+        return axios.post(`admin/auth/token-refresh`);
     }
 
 }

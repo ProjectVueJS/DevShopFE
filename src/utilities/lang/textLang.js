@@ -61,22 +61,22 @@ export var inputGender = {
         label: 'Chọn giới tính',
         male: {
             name: 'Nam',
-            value: 'male',
+            value: 'MALE',
         },
         female: {
             name: 'Nữ',
-            value: 'female',
+            value: 'FEMALE',
         },
     },
     en: {
         label: 'Select gender',
         male: {
             name: 'Male',
-            value: 'male',
+            value: 'MALE',
         },
         female: {
             name: 'Female',
-            value: 'female',
+            value: 'FEMALE',
         },
     },
 }
@@ -85,22 +85,22 @@ export var inputStatus = {
         label: 'Chọn trạng thái',
         active: {
             name: 'Hoạt động',
-            value: 'active',
+            value: 'AC',
         },
         inactive: {
             name: 'Ngừng hoạt động',
-            value: 'inactive',
+            value: 'IAC',
         },
     },
     en: {
         label: 'Select Status',
         active: {
             name: 'Active',
-            value: 'active',
+            value: 'AC',
         },
         inactive: {
             name: 'Inactive',
-            value: 'inactive',
+            value: 'IAC',
         },
     },
 }

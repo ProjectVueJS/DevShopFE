@@ -120,16 +120,16 @@
                             </td>
                             <td class="px-6 py-2 text-center">
                                 <!-- {{value.status}} -->
-                                <img src="@/assets/imgs/icon/inactive.png" v-if="value.status == 0" class="mx-auto"
+                                <img src="@/assets/imgs/icon/inactive.png" v-if="value.status == 'IAC'" class="mx-auto"
                                     width="40">
-                                <img src="@/assets/imgs/icon/active.png" v-if="value.status == 1" class="mx-auto"
+                                <img src="@/assets/imgs/icon/active.png" v-if="value.status == 'AC'" class="mx-auto"
                                     width="40">
                             </td>
                             <td class="px-6 py-2">
                                 <!-- {{value.gender}} -->
-                                <img src="@/assets/imgs/icon/male.png" v-if="value.gender == 0" class="mx-auto"
+                                <img src="@/assets/imgs/icon/male.png" v-if="value.gender == 'MALE'" class="mx-auto"
                                     width="40">
-                                <img src="@/assets/imgs/icon/female.png" v-if="value.gender == 1" class="mx-auto"
+                                <img src="@/assets/imgs/icon/female.png" v-if="value.gender == 'FEMALE'" class="mx-auto"
                                     width="40">
                             </td>
                         </tr>

@@ -53,7 +53,7 @@
                     <p class="my-1 sm:text-sm text-xs text-red-600" v-if="errors.password">{{ errors.password }}</p>
                 </div>
                 <div class="flex flex-col">
-                    <label for="password_confirmation" class="sm:text-sm text-xs font-medium mb-1">{{ text.password_confirmation
+                    <label for="password_confirmation" class="sm:text-sm text-xs font-medium mb-1">{{ text.confirmPassword
                         }}:</label>
                     <input type="password" v-model="user.password_confirmation" id="password_confirmation"
                         class="sm:text-sm text-xs px-2 h-8 border border-gray-300 rounded-md shadow-sm focus:outline focus:outline-1 focus:outline-blue-600"
@@ -161,8 +161,9 @@ export default {
                 phone: '0943082871',
                 address: 'q12, hcm',
                 role: 'admin',
-                gender: 'male',
-                status: 'active',
+                // gender: 'male',
+                gender: '',
+                status: '',
             },
             data: {},
             errors: {},
